@@ -9,8 +9,10 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
-    var newPlace: Place?
+    var newPlace = Place()
     var imageIsChanged = false
+    
+    
 
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var placeName: UITextField!
@@ -20,6 +22,11 @@ class NewPlaceViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            self.newPlace.getPlaces()
+        }
+        
 
         tableView.tableFooterView = UIView()
         
@@ -73,11 +80,11 @@ class NewPlaceViewController: UITableViewController {
             image = UIImage(named: "imagePlaceholder")
         }
         
-        newPlace = Place(name: placeName.text!,
-                         location: placeLocation.text,
-                         type: placeType.text,
-                         restorantImage: nil,
-                         image: image)
+//        newPlace = Place(name: placeName.text!,
+//                         location: placeLocation.text,
+//                         type: placeType.text,
+//                         restorantImage: nil,
+//                         image: image)
     }
 
     @IBAction func cancelAction(_ sender: Any) {

@@ -14,19 +14,42 @@ class MapViewController: UIViewController {
     var place =  Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInMeters = 1_000.0
+    var incomeSegueIdentifier = ""
 
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
 
-        setupPlacemark()
+        setupMapView()
         checkLocationServices()
     }
 
     @IBAction func closeVC() {
         dismiss(animated: true)
+    }
+    
+    @IBAction func centerViewInUserLocation() {
+        
+        showUserLocation()
+    }
+    
+    @IBAction func doneButtonPressed() {
+    }
+    
+    private func setupMapView() {
+        
+        if incomeSegueIdentifier == "showPlace" {
+            setupPlacemark()
+            mapPinImage.isHidden = true
+            adressLabel.isHidden = true
+            doneButton.isHidden = true
+        }
     }
     
     private func setupPlacemark() {
@@ -64,7 +87,9 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.openAlertController()
+            }
         }
     }
     
@@ -80,21 +105,47 @@ class MapViewController: UIViewController {
         switch authorizationStatus {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            if incomeSegueIdentifier == "getAdress" { showUserLocation() }
             break
         case .denied:
-            // show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.openAlertController()
+            }
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
-            // show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.openAlertController()
+            }
             break
         case .authorizedAlways:
             break
         @unknown default:
             print("new case is availeble")
         }
+    }
+    
+    private func showUserLocation() {
+        
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    private func openAlertController() {
+        
+        let alert = UIAlertController(title: "Geopositioning is disabled",
+                                      message: "To get your geo-position, press Allow in your phone settings",
+                                      preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancel)
+            
+        present(alert, animated: true)
     }
     
 }

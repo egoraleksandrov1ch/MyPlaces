@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hNS-j9-jnq">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -277,7 +276,7 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Done">
-                                    <color key="titleColor" red="0.067567396099999996" green="0.067567396099999996" blue="0.067567396099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
                                     <action selector="doneButtonPressed" destination="mSI-pN-ijZ" eventType="touchUpInside" id="HX7-2Z-weZ"/>
@@ -540,7 +539,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="VTL-H9-j5Z"/>
-        <segue reference="siJ-fx-vYE"/>
+        <segue reference="QMw-Ra-lEN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>

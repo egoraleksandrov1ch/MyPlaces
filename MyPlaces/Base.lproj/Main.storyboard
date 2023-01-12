@@ -128,7 +128,7 @@
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="mSI-pN-ijZ" kind="presentation" identifier="getAdress" id="IKC-WA-ZAh"/>
+                                                        <segue destination="mSI-pN-ijZ" kind="presentation" identifier="getAddess" id="IKC-WA-ZAh"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -297,6 +297,18 @@
                                     <action selector="centerViewInUserLocation" destination="mSI-pN-ijZ" eventType="touchUpInside" id="bmq-Jg-od4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PY-wH-WlD">
+                                <rect key="frame" x="171.66666666666666" y="728" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="U9a-9e-2FQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="sKw-H1-g6K"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="GetDirection"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="mSI-pN-ijZ" eventType="touchUpInside" id="XXq-kn-Ht8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IpA-sE-0Db"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -304,6 +316,7 @@
                             <constraint firstItem="IpA-sE-0Db" firstAttribute="trailing" secondItem="rBF-jv-xcN" secondAttribute="trailing" constant="16" id="0Ze-ht-1zC"/>
                             <constraint firstAttribute="bottom" secondItem="23r-LQ-FTf" secondAttribute="bottom" id="7cf-Jy-ha1"/>
                             <constraint firstItem="IpA-sE-0Db" firstAttribute="trailing" secondItem="Id1-Px-HwC" secondAttribute="trailing" constant="40" id="8Ut-Fw-oS2"/>
+                            <constraint firstItem="IpA-sE-0Db" firstAttribute="bottom" secondItem="2PY-wH-WlD" secondAttribute="bottom" constant="40" id="96k-8T-1Eo"/>
                             <constraint firstItem="IpA-sE-0Db" firstAttribute="trailing" secondItem="SRw-5C-8gi" secondAttribute="trailing" constant="45" id="HBT-FT-piJ"/>
                             <constraint firstItem="IpA-sE-0Db" firstAttribute="bottom" secondItem="SRw-5C-8gi" secondAttribute="bottom" constant="105" id="JTO-ex-vzX"/>
                             <constraint firstItem="23r-LQ-FTf" firstAttribute="top" secondItem="rBF-jv-xcN" secondAttribute="bottom" constant="-219" id="LbS-fl-7hh"/>
@@ -315,12 +328,14 @@
                             <constraint firstItem="23r-LQ-FTf" firstAttribute="leading" secondItem="IpA-sE-0Db" secondAttribute="leading" id="eHd-iA-qbb"/>
                             <constraint firstItem="Ddg-3s-w3e" firstAttribute="centerY" secondItem="sfh-6L-Djd" secondAttribute="centerY" constant="-20" id="hdH-zQ-NkC"/>
                             <constraint firstItem="IpA-sE-0Db" firstAttribute="bottom" secondItem="UwZ-hB-gRt" secondAttribute="bottom" constant="40" id="nCK-E6-6HL"/>
+                            <constraint firstItem="2PY-wH-WlD" firstAttribute="centerX" secondItem="sfh-6L-Djd" secondAttribute="centerX" id="xxv-bh-AkS"/>
                             <constraint firstItem="23r-LQ-FTf" firstAttribute="trailing" secondItem="IpA-sE-0Db" secondAttribute="trailing" id="yqm-40-ppV"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="adressLabel" destination="rBF-jv-xcN" id="bh4-L6-P5s"/>
+                        <outlet property="addressLabel" destination="rBF-jv-xcN" id="bh4-L6-P5s"/>
                         <outlet property="doneButton" destination="UwZ-hB-gRt" id="6Vp-qt-wLr"/>
+                        <outlet property="goButton" destination="2PY-wH-WlD" id="uGt-7j-mLc"/>
                         <outlet property="mapPinImage" destination="Ddg-3s-w3e" id="Apd-J4-o5i"/>
                         <outlet property="mapView" destination="23r-LQ-FTf" id="2Sh-hT-VzB"/>
                     </connections>
@@ -538,11 +553,12 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="VTL-H9-j5Z"/>
+        <segue reference="IKC-WA-ZAh"/>
         <segue reference="QMw-Ra-lEN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="GetDirection" width="50" height="50"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
         <image name="Pin" width="40" height="40"/>
         <image name="camcel" width="128" height="128"/>
